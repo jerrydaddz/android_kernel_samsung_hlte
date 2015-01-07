@@ -438,6 +438,14 @@ static int sb_finish_set_opts(struct super_block *sb)
 	if (strncmp(sb->s_type->name, "sdcardfs", sizeof("sdcardfs")) == 0)
 		sbsec->flags |= SE_SBLABELSUPP;
 
+	/* Special handling for pstore */
+	if (strncmp(sb->s_type->name, "pstore", sizeof("pstore")) == 0)
+		sbsec->flags |= SE_SBLABELSUPP;
+
+	/* Special handling for debugfs */
+	if (strncmp(sb->s_type->name, "debugfs", sizeof("debugfs")) == 0)
+		sbsec->flags |= SE_SBLABELSUPP;
+
 	/* Initialize the root inode. */
 	rc = inode_doinit_with_dentry(root_inode, root);
 
