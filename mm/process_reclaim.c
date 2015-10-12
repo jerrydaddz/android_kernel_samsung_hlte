@@ -214,8 +214,6 @@ static void swap_fn(struct work_struct *work)
 	}
 }
 
-#define atomic_dec_if_positive(v) atomic_sub_if_positive(1, v)
-
 static int vmpressure_notifier(struct notifier_block *nb,
 			unsigned long action, void *data)
 {
